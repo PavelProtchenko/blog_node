@@ -7,14 +7,10 @@
 </head>
 
 <body>
-  <a href="/create">Add</a>
-  <ul>
-    <% arr.forEach( (item) => { %>
-      <li>
-        <%= item %>
-      </li>
-     <% }); %>
-  </ul>
+  <form method="post">
+    <input type="text" name="text">
+    <button type="submit">Submit</button>
+  </form>
 </body>
 
 </html>

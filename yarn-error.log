@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/10.11.0/bin/node /usr/local/Cellar/yarn/1.10.1/libexec/bin/yarn.js start
+  /usr/local/Cellar/node/10.11.0/bin/node /usr/local/Cellar/yarn/1.10.1/libexec/bin/yarn.js add -D eslint-config-prettier
 
 PATH: 
   /usr/local/opt/postgresql@9.6/bin:/Users/pavel/.rbenv/shims:/usr/local/opt/openssl/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -14,28 +14,26 @@ Platform:
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/pavel/Desktop/my_projects/blog_node/package.json: Unexpected token , in JSON at position 49
-      at JSON.parse (<anonymous>)
-      at /usr/local/Cellar/yarn/1.10.1/libexec/lib/cli.js:1136:59
-      at Generator.next (<anonymous>)
-      at step (/usr/local/Cellar/yarn/1.10.1/libexec/lib/cli.js:98:30)
-      at /usr/local/Cellar/yarn/1.10.1/libexec/lib/cli.js:109:13
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com registry.yarnpkg.com:443
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:57:26)
 
 npm manifest: 
   {
     "scripts": {
-      "start": "index.js"
-     }
+      "start": "node index.js",
+      "dev": "nodemon index.js"
     },
     "devDependencies": {
       "eslint": "^5.12.1",
       "eslint-plugin-node": "^8.0.1",
-       "nodemon": "^1.18.9"
+      "nodemon": "^1.18.9"
     },
     "engines": {
       "node": ">=6.0.0"
     },
     "dependencies": {
+      "body-parser": "^1.18.3",
+      "ejs": "^2.6.1",
       "express": "^4.16.4"
     }
   }
@@ -227,7 +225,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-1.12.0.tgz#c2d780f53d45bba8317a8902d4ceeaf3a6385b14"
     integrity sha512-DYWGk01lDcxeS/K9IHPGWfT8PsJmbXRtRd2Sx72Tnb8pcYZQFF1oSDb8hJtS1vhp212q1Rzi5dUf9+nq0o9UIg==
   
-  body-parser@1.18.3:
+  body-parser@1.18.3, body-parser@^1.18.3:
     version "1.18.3"
     resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.18.3.tgz#5b292198ffdd553b3a0f20ded0592b956955c8b4"
     integrity sha1-WykhmP/dVTs6DyDe0FkrlWlVyLQ=
@@ -606,6 +604,11 @@ Lockfile:
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
     integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
+  
+  ejs@^2.6.1:
+    version "2.6.1"
+    resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.6.1.tgz#498ec0d495655abc6f23cd61868d926464071aa0"
+    integrity sha512-0xy4A/twfrRCnkhfk8ErDi5DqdAsAqeGxht4xkCUrsvhhbQNs7E+4jV0CN7+NKIY0aHE72+XvqtBIXzD31ZbXQ==
   
   encodeurl@~1.0.2:
     version "1.0.2"
