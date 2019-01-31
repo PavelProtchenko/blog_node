@@ -1,21 +1,5 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+<% include layout/header.ejs %>
 
-<body>
-  <a href="/create">Add</a>
-  <ul>
-    <% posts.forEach( (post) => { %>
-      <li>
-        <b><%= post.title %></b>
-        <p><%= post.body %> | <%= post.createdAt %></p>
-      </li>
-     <% }); %>
-  </ul>
-</body>
+<h1>Hello</h1>
 
-</html>
+<% include layout/footer.ejs %>
