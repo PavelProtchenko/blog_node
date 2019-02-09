@@ -5,6 +5,8 @@ const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const cssnano = require('gulp-cssnano');
 const plumber = require('gulp-plumber');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglifyjs');
 /* eslint-enable node/no-unpublished-require */
 
 gulp.task('scss', () => {
@@ -21,10 +23,31 @@ gulp.task('scss', () => {
     .pipe(gulp.dest('public/stylesheets'))
 });
 
+gulp.task('scripts', () => {
+  return gulp
+    .src([
+      'dev/js/auth.js'
+    ])
+    .pipe(concat('scripts.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('public/javascripts'))
+});
+
 gulp.task('watch', () => {
   gulp.watch('dev/scss/**/*.scss', gulp.series('scss'));
 });
 
+gulp.task('watch', () => {
+  gulp.watch('dev/js/**/*.js', gulp.series('scripts'));
+});
+
+// gulp.task('watch', gulp.series('scss', 'scripts'), () => {
+//   gulp.watch('dev/scss/**/*.scss', gulp.series('scss'));
+//   gulp.watch('dev/js/**/*.js', gulp.series('scripts'));
+// });
+
 gulp.task('default', gulp.series(
-  gulp.parallel('scss')
+  gulp.parallel('scss'),
+  gulp.parallel('scripts'),
+  gulp.parallel('watch')
 ));
