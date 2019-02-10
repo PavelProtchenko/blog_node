@@ -15,10 +15,21 @@ router.post('/register', (req, res) => {
   const passwordConfirm = req.body.passwordConfirm;
 
   if (!login || !password || !passwordConfirm) {
+    const fields = [];
+    if (!login) fields.push('login')
+    if (!password) fields.push('password')
+    if (!passwordConfirm) fields.push('passwordConfirm')
+
     res.json({
       ok: false,
       error: 'All fields must be fulfilled!',
-      fields: ['login', 'password', 'passwordConfirmation']
+      fields
+    });
+  } else if (!/^[A-Za-z0-9]+$/.test(login)) {
+    res.json({
+      ok: false,
+      error: 'Only latin letters and numbers!',
+      fields: ['login']
     });
   } else if (login.length < 3 || login.length > 16) {
     res.json({
@@ -32,8 +43,13 @@ router.post('/register', (req, res) => {
       error: 'Password doesn\'t match!',
       fields: ['password', 'passwordConfirm']
     });
+  } else if (password.length < 5 ) {
+    res.json({
+      ok: false,
+      error: 'Password length is too short, enter more than 5 characters!',
+      fields: ['password']
+    });
   } else {
-
     models.User.findOne({
       login
     }).then(user => {
