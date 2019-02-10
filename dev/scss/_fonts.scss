@@ -42,3 +42,22 @@ small,
 .font-small {
   font-size: 0.8em;
 }
+
+div.success,
+p.success,
+div.error,
+p.error {
+  background-color: leighten($successColor, 50%);
+  border: 1px solid $successColor;
+  font-size: 0.8em;
+  padding: $free-space / 2;
+  color: $successColor;
+  border-radius: $borderRadius;
+}
+
+div.error,
+p.error {
+  background-color: lighten($errorColor, 45%);
+  border-color: $errorColor;
+  color: $errorColor;
+}

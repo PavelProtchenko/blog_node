@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const staticAsset = require('static-asset');
 const config = require('./config');
+const routes = require('./routes');
 
 // express
 const app = express();
@@ -10,6 +11,7 @@ const app = express();
 // sets and uses
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(staticAsset(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(
@@ -21,6 +23,7 @@ app.use(
 app.get('/', (req,res) => {
   res.render('index');
 });
+app.use('/api/auth', routes.auth);
 
 // catch 404
 app.use((req, res, next) => {
