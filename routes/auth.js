@@ -16,9 +16,9 @@ router.post('/register', (req, res) => {
 
   if (!login || !password || !passwordConfirm) {
     const fields = [];
-    if (!login) fields.push('login')
-    if (!password) fields.push('password')
-    if (!passwordConfirm) fields.push('passwordConfirm')
+    if (!login) fields.push('login');
+    if (!password) fields.push('password');
+    if (!passwordConfirm) fields.push('passwordConfirm');
 
     res.json({
       ok: false,
